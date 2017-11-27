@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RatingStars from './RatingStars'
 import './MovieCard.css'
  import MovieCreator from './MovieCreator'
+ import CreateUpdateForm from './CreateUpdateForm'
 class MovieCard extends Component{
   constructor(props) {
     super(props)
@@ -17,14 +18,14 @@ class MovieCard extends Component{
                       <RatingStars  Rate={this.props.movie.Rate} />
 
                       <button onClick={() => this.openModal()}>Edit</button>
-                        <MovieCreator isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
+                        <CreateUpdateForm isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
                           Title:
                           <input />
                           rate:
                           <input />
 
                               <p><button onClick={() => this.closeModal()}>Close</button></p>
-                          </MovieCreator>
+                          </CreateUpdateForm>
 
                     </div>
           </div>
