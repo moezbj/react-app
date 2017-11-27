@@ -14,7 +14,6 @@ class MovieCard extends Component{
     this.state={
       counter:0,
       editMode:false
-
     }
     setInterval(() =>{
 
@@ -39,7 +38,7 @@ class MovieCard extends Component{
                 { this.state.editMode==true &&
                   <input value= {movie.title}/>
                 }
-                <RatingStars   />
+                <RatingStars  Rate={this.props.movie.Rate} />
                   <a href="#" className="btn btn-primary"  onClick= { editModeHandler_ } >Edit</a>
                 </div>
               </div>
