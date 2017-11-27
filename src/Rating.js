@@ -2,22 +2,6 @@ import React, { Component } from 'react';
 import MovieCard from './MovieCard'
 
 class Rating extends Component {
-  constructor (props) {
-    super(props)
-    this.state={
-    }
-  }
-
-
-//   RateTest (event) {
-//     let filterMovie = this.props.movies.map((m)=>{
-//       if(this.state.value == this.props.movies.rate){
-//         return (
-//           <MovieCard movie={this.props.movies} />
-//         )
-//       }
-//     })
-// }
   render(){
     let Movies=this.props.movies
        return(

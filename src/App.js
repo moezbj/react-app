@@ -3,12 +3,14 @@ import React, { Component } from 'react';
 import './App.css';
 import MovingList from './MovingList'
 import Rating from './Rating'
+import MovieCreator from './MovieCreator'
 
 
 class App extends Component {
   constructor (props) {
     super(props)
     this.state ={
+      isModalOpen: false,
       MinRating:0,
       movies :[
         {
@@ -56,16 +58,30 @@ class App extends Component {
                 console.log(this.state.MinRating)
               }}
               />
+              <button onClick={() => this.openModal()}>Add</button>
+                <MovieCreator isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
+                  Title:
+                  <input />
+                  rate:
+                  <input />
+                      <p><button onClick={() => this.closeModal()}>Close</button></p>
+                  </MovieCreator>
+
+
             <MovingList movies={this.state.movies.filter((el) =>{
-              return el.Rate>=this.state.MinRating
+              return el.Rate >= this.state.MinRating
             }
           )}/>
-
-
-
     </div>
     );
   }
+  openModal() {
+      this.setState({ isModalOpen: true })
+    }
+
+    closeModal() {
+      this.setState({ isModalOpen: false })
+    }
 }
 
 export default App;
