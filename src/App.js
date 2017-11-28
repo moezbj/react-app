@@ -21,7 +21,7 @@ class App extends Component {
         {
           title:"pirate",
           src:"images/pirate.png",
-          Rate:3
+          Rate:5
         },
         {
           title:"avatar",
@@ -30,12 +30,12 @@ class App extends Component {
         },{
           title:"fallout",
           src:"images/fallout.png",
-          Rate:4
+          Rate:2
         },
         {
           title:"min",
           src:"images/min.png",
-          Rate:5
+          Rate:1
         },{
           title:"justice league",
           src:"images/jl.png",
@@ -58,30 +58,24 @@ class App extends Component {
                 console.log(this.state.MinRating)
               }}
               />
-              <button onClick={() => this.openModal()}>Add</button>
-                <MovieCreator isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
-                  Title:
-                  <input />
-                  rate:
-                  <input />
-                      <p><button onClick={() => this.closeModal()}>Close</button></p>
-                  </MovieCreator>
+
+              <MovieCreator onSubmitMovie={(m)=>{
+                this.setState({
+                    movies:this.state.movies.concat([m])
+                })
+              }
+              }/>
+
 
 
             <MovingList movies={this.state.movies.filter((el) =>{
               return el.Rate >= this.state.MinRating
-            }
-          )}/>
+                }
+              )}/>
     </div>
     );
   }
-  openModal() {
-      this.setState({ isModalOpen: true })
-    }
 
-    closeModal() {
-      this.setState({ isModalOpen: false })
-    }
 }
 
 export default App;

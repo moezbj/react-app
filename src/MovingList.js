@@ -6,7 +6,9 @@ class MovingList extends Component{
     return(<div className="card-deck row">
         {
           this.props.movies.map((m,i) => {
-            return <MovieCard key={i}  movie={m}/>
+            return <div className="col-md-4" key={i}>
+              <MovieCard movie={m} />
+            </div>
           })
         }
         </div>)

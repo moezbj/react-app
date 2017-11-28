@@ -10,7 +10,7 @@ class RatingStars extends Component{
        rating = 5
      }
      let stars = []
-     for (let i = 0; i < 5; i++) {
+     for (let i = 0; i <= 4; i++) {
        if (i < rating) {
          stars.push(<span key={i}>&#9733;</span>)
        } else {
