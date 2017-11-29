@@ -1,5 +1,5 @@
 import React from 'react';
-
+import CreateUpdateForm from './CreateUpdateForm'
 
 class MovieCreator extends React.Component {
   constructor (props) {
@@ -31,49 +31,33 @@ movieRating:newvalue
   })
 }
   render() {
-        return(
+        return (
         <div className='container'>
-      <button type='button' className='add-movie-btn-outside' data-toggle='modal' data-target='#myModal' >
-  {this.props.value}
-ADD</button>
-      <div className='modal fade' id='myModal'>
-        <div className='modal-dialog'>
-          <div className='modal-content'>
-            <div className='modal-header'>
-              <h3>Create or Update a movie</h3>
-              <button type='button' className='close' data-dismiss='modal'>&times;</button>
-            </div>
-            <div className='modal-body'>
-              <div className='movie-updater-creator-container'>
-                <form>
-                  <div className='form-group'>
-                    <label className='label-name' >Movie title:</label>
-                    <input type='text' className='form-control' id='movie-title-input' placeholder='Add the movie title here' name={this.state.name} onChange={this.onChangeTitle.bind(this)}/>
-                  </div>
-                  <div className='form-group'>
-                    <label className='label-name'>Movie Rating:</label>
-                    <input type='text' className='form-control' id='movie-rating-input' placeholder='between 0 and 5' name={this.state.name} onChange={this.onChangeRate.bind(this)}/>
-                  </div>
-                  <div className='form-group'>
-                    <label className='label-name'>Movie Image:</label>
-                    <input type='text' className='form-control' id='movie-image-input' placeholder='Add the movie image url here' name={this.state.name} onChange={this.onChangeSrc.bind(this)} />
-                  </div>
-                  <input type='button' className='add-movie-btn-inside-form' data-dismiss='modal' value='SAVE' onClick={ () => {
+          <button onClick={() => this.openModal()} >{this.props.value} ADD A Movie</button>
+          <CreateUpdateForm isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
+            Title:
+              <input onChange={this.onChangeTitle.bind(this)} /><br />
+            rate:
+              <input onChange={this.onChangeRate.bind(this)} /><br />
+              Pic:
+              <input onChange={this.onChangeSrc.bind(this)} /><br />
+                  <input type='button' className='add-movie-btn-inside-form'  value='SAVE' onClick={ () => {
+                    this.closeModal()
                     this.props.onSubmitMovie({
                       title:this.state.movieTitle,
                       src:this.state.movieImage,
                       Rate:this.state.movieRating
-                    })}}/>
-                </form>
-              </div>
-            </div>
-            <div className='modal-footer'>
-            </div>
+                    })
+                  }}/>
+              </CreateUpdateForm>
           </div>
-        </div>
-      </div>
-    </div>
       )
     }
+    openModal() {
+        this.setState({ isModalOpen: true })
+      }
+      closeModal() {
+        this.setState({ isModalOpen: false })
+      }
   }
 export default MovieCreator;

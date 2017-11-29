@@ -38,19 +38,16 @@ class MovieCard extends Component{
     })
       console.log(this.state.inputsrc)
   }
-  onUpdate(event){
-    this.setState({
-      movieList:{
-        title:this.state.inputTitle,
-        src:this.state.inputRate,
-        Rate:this.state.inputsrc
-      }
-    })
-    console.log(this.state.srcInput)
-  }
-
-
-
+  // onUpdate(event){
+  //   this.setState({
+  //     movieList:{
+  //       title:this.state.inputTitle,
+  //       src:this.state.inputRate,
+  //       Rate:this.state.inputsrc
+  //     }
+  //   })
+  //   console.log(this.state.srcInput)
+  // }
   render() {
     let movie = this.props.movie
     return (
@@ -63,12 +60,19 @@ class MovieCard extends Component{
                       <button onClick={() => this.openModal()}>Edit</button>
                         <CreateUpdateForm isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
                           Title:
-                            <input onChange={this.onChangeTitle.bind(this)} placeholder={this.props.movie.title} />
+                            <input onChange={this.onChangeTitle.bind(this)} placeholder={this.props.movie.title} /><br />
                           rate:
-                            <input onChange={this.onChangeRate.bind(this)}  placeholder={this.props.movie.Rate} />
+                            <input onChange={this.onChangeRate.bind(this)}  placeholder={this.props.movie.Rate} /><br />
                             Pic:
-                            <input onChange={this.onChangeSRc.bind(this)} placeholder={this.props.movie.src}/>
-                            <p><button onClick={this.onUpdate.bind(this)}>Edit</button></p>
+                            <input onChange={this.onChangeSRc.bind(this)} placeholder={this.props.movie.src}/><br />
+                            <p><button onClick={ () => {
+                              this.props.onUpdateMovie({
+                                title:this.state.inputTitle,
+                                src:this.state.inputRate,
+                                Rate:this.state.inputsrc
+                              })}}>Edit</button></p>
+
+
                               <p><button onClick={() => this.closeModal()}>Close</button></p>
 
                           </CreateUpdateForm>

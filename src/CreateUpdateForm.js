@@ -14,7 +14,7 @@ class CreateUpdateForm extends React.Component {
           zIndex: '9999',
           background: '#fff'
         }
-        
+
         if (this.props.style) {
           for (let key in this.props.style) {
             modalStyle[key] = this.props.style[key]

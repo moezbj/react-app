@@ -12,7 +12,6 @@ class MovingList extends Component{
           })
         }
         </div>)
-
   }
 }
 export default MovingList;

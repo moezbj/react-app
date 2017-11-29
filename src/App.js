@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import ReactModal from "react-modal";
 import './App.css';
 import MovingList from './MovingList'
 import Rating from './Rating'
@@ -16,30 +16,36 @@ class App extends Component {
         {
           title:"super-man",
           src:"images/super-man.png",
-          Rate:3
+          Rate:3,
+          id:0
         },
         {
           title:"pirate",
           src:"images/pirate.png",
-          Rate:5
+          Rate:5,
+          id:1
         },
         {
           title:"avatar",
           src:"images/avatar.png",
-          Rate:4
+          Rate:4,
+          id:2
         },{
           title:"fallout",
           src:"images/fallout.png",
-          Rate:2
+          Rate:2,
+          id:3
         },
         {
           title:"min",
           src:"images/min.png",
-          Rate:1
+          Rate:1,
+          id:4
         },{
           title:"justice league",
           src:"images/jl.png",
-          Rate:5
+          Rate:5,
+          id:5
         }
       ]
     }
@@ -66,12 +72,11 @@ class App extends Component {
               }
               }/>
 
-
-
             <MovingList movies={this.state.movies.filter((el) =>{
               return el.Rate >= this.state.MinRating
                 }
-              )}/>
+              )}
+              />
     </div>
     );
   }
